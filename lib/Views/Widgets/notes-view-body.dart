@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Views/Widgets/custom-app-bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes/Views/Widgets/custom-note-card.dart';
 
 class NotesViewBody extends StatelessWidget {
   const NotesViewBody({super.key});
@@ -13,7 +15,11 @@ class NotesViewBody extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          CustomAppBar()
+          CustomAppBar(),
+          SizedBox(
+            height: 15,
+          ),
+          CustomNoteCard(),
         ],
       ),
     );
