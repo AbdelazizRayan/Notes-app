@@ -1,10 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'note_model.dart';
+// part of 'note_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
+import 'package:hive/hive.dart';
+import 'package:notes/models/note_model.dart';
 
 class NoteModelAdapter extends TypeAdapter<NoteModel> {
   @override
