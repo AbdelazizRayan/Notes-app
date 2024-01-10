@@ -8,6 +8,7 @@ class EditNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: EditNotesViewBody(),
+      
     );
   }
 }
