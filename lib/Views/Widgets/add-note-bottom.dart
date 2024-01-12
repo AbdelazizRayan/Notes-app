@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes/Views/Widgets/Add_note_form.dart';
 import 'package:notes/cubits/Add_note_cubit/add_note_cubit.dart';
+import 'package:notes/cubits/Add_note_cubit/notes/notes_cubit.dart';
 
 class AddNote extends StatelessWidget {
   const AddNote({super.key});
@@ -13,10 +14,9 @@ class AddNote extends StatelessWidget {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          if (state is AddNoteFailure) {
-            debugPrint('failed ${state.errorMessage}');
-          }
+          if (state is AddNoteFailure) {}
           if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
           }
         },
