@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/Views/edit-note.dart';
+import 'package:notes/models/note_model.dart';
 
 class CustomNoteCard extends StatelessWidget {
-  const CustomNoteCard({super.key});
-
+  const CustomNoteCard({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +25,7 @@ class CustomNoteCard extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 24, top: 24, bottom: 24, right: 16),
           decoration: BoxDecoration(
-            color: const Color(0xffffcc80),
+            color: Color(note.color),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -32,28 +33,30 @@ class CustomNoteCard extends StatelessWidget {
             children: [
               ListTile(
                 contentPadding: const EdgeInsets.all(0),
-                title: const Padding(
-                  padding: EdgeInsets.only(bottom: 16),
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
                   child: Text(
-                    'Flutter Tips',
-                    style: TextStyle(
+                    note.title,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 26,
                     ),
                   ),
                 ),
-                subtitle: const Padding(
-                  padding: EdgeInsets.only(bottom: 16),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
                   child: Text(
-                    'Build your career do not \nlook back',
-                    style: TextStyle(
+                    note.subTitle,
+                    style: const TextStyle(
                       color: Color.fromARGB(155, 0, 0, 0),
                       fontSize: 18,
                     ),
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                   color: Colors.black,
                   icon: const Icon(
                     FontAwesomeIcons.trash,
@@ -61,11 +64,11 @@ class CustomNoteCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 10),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
                 child: Text(
-                  'May21, 2022',
-                  style: TextStyle(
+                  note.date,
+                  style: const TextStyle(
                     color: Color.fromARGB(155, 0, 0, 0),
                     fontSize: 14,
                   ),
